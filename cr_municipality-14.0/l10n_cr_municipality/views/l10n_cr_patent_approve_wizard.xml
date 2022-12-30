@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="l10n_cr_patent_approve_wizard_view_form" model="ir.ui.view">
+        <field name="name">l10n_cr.patent.approve_wizard.view.form</field>
+        <field name="model">l10n_cr.patent.approve_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Aprobar Patente">
+                <h2>
+                    <field name="patent_id"/>
+                </h2>
+                <group>
+<!--                    <field name="full_year"/>-->
+                    <group>
+                         <field name="trimester" widget="radio"/>
+                         <field name="apply_discount" attrs="{'invisible':[('trimester', '!=', 't4')]}"/>
+                    </group>
+                    <group name="message_trimester">
+                            <div attrs="{'invisible':[('trimester', '!=', 't1')]}" class="oe_grey" colspan="4">
+                               Genera comprobante para trimestre 1 (Enero, Febrero y Marzo).
+                            </div>
+                            <div attrs="{'invisible':[('trimester', '!=', 't2')]}" class="oe_grey" colspan="4">
+                              Genera comprobante para trimestre 1 (Enero, Febrero y Marzo) y
+                                trimestre 2 (Abril, Mayo, Junio).
+                            </div>
+                            <div attrs="{'invisible':[('trimester', '!=', 't3')]}" class="oe_grey" colspan="4">
+                               Genera comprobante para trimestre 1 (Enero, Febrero y Marzo),
+                                trimestre 2 (Abril, Mayo, Junio) y trimestre 3 (Julio, Agosto, Setiembre).
+                            </div>
+                            <div attrs="{'invisible':[('trimester', '!=', 't4')]}" class="oe_grey" colspan="4">
+                               Genera comprobante para todo el Año.
+                            </div>
+                    </group>
+
+                </group>
+                <footer>
+                    <button name="approve" type="object" string="Aprobar" class="oe_highlight"/>
+                    o
+                    <button special="cancel" string="Cancelar"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
